@@ -20,8 +20,9 @@ public class Garaje {
     long tSalida;
     public long toto;
     private double dinero;
-    double euros;
+    double euros, dineroI, cambio, diff1, diff3, dineroQueda, cond;
     Coche coches = new Coche();
+    DecimalFormat df = new DecimalFormat("#.00");
 
     public void funcionamientoGaraje() {
 
@@ -37,14 +38,38 @@ public class Garaje {
             //Esta variable calcula los dineros. No funciona del todo bien, la conversión es enrevesada.
             //Supuestamente 3000 milisegundos son 3h. Cada hora son 1000 milisegundos.
             if (toto > 3000) {
-                dinero = (toto - 3000) * 0.0002 + 1.5;              
+                dinero = (toto - 3000) * 0.0002 + 1.5;
             } else {
                 dinero = 1.5;
             }
-            //En este JOption muestra la factura.
-            DecimalFormat df = new DecimalFormat("#.00");
-            JOptionPane.showMessageDialog(null, "Matricula: " + coches.matricula + "\nCoche " + coches.cont + "\nPlaza: " + plazas + "\nTiempo: " + toto + "\nDinero: " +df.format(dinero)+ "€");
-            coches.pene();
+
+            JOptionPane.showMessageDialog(null, "*Un café y un bocadillo después...*");
+
+            dineroI = Double.parseDouble(JOptionPane.showInputDialog("Importe: " + df.format(dinero) + ".\nIntroduzca el dinero"));
+
+            if (dineroI > dinero) {
+                cambio = dineroI - dinero;
+            } else {
+                for (int i = 0; dinero != 0; i++) {
+                    if (dineroI > dinero) {
+
+                        cambio = dineroI - dinero;
+                        break;
+                    }
+
+                    dinero -= dineroI;
+                    if (dinero == 0) {
+                        break;
+                    } else {
+                        dineroI = Double.parseDouble(JOptionPane.showInputDialog("Importe: " + df.format(dinero) + ".\nIntroduzca el dinero"));
+
+                    }
+
+                }
+            }
+
+            JOptionPane.showMessageDialog(null, "Matricula: " + coches.matricula + "\nCoche " + coches.cont + "\nPlaza: " + plazas + "\nTiempo: " + toto + "\nDinero: " + df.format(dinero) + "€" + "\nDinero introducido: " + df.format(dineroI) + "\nCambio: " + df.format(cambio));
+            coches.contadorCoche();
             plazas--;
             nCoches--;
             if (plazas > 0) {
