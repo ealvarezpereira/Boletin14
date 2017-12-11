@@ -17,10 +17,10 @@ public class Coche{
     public int cont= 1;
 
     public void introducirCoche() {       
-        matricula = JOptionPane.showInputDialog("Coche "+cont);   
+        matricula = JOptionPane.showInputDialog("Coche "+cont);
     }
 
-    public void pene(){
+    public void contadorCoche(){
         cont++;
     }
 }
