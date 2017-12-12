@@ -74,7 +74,6 @@ public class Garaje {
                     } else {
                         dineroI = Double.parseDouble(JOptionPane.showInputDialog("Importe: " + df.format(dinero) + ".\nIntroduzca el dinero"));
 
-                        System.out.println(dinero);
                     }
 
                 } while (dinero != 0);
