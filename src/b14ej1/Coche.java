@@ -11,16 +11,23 @@ import javax.swing.JOptionPane;
  *
  * @author quique
  */
-public class Coche{
+public class Coche {
 
     public String matricula;
-    public int cont= 1;
+    public int cont = 1;
 
-    public void introducirCoche() {       
-        matricula = JOptionPane.showInputDialog("Coche "+cont);
+    public void introducirCoche() {
+        matricula = JOptionPane.showInputDialog("Coche " + cont);
+
+        //Bucle que te obliga a introducir una matrícula
+        while (matricula == null || matricula.equals("")) {
+            matricula = JOptionPane.showInputDialog("No se ha reconocido la matrícula.");
+        }
+
     }
 
-    public void contadorCoche(){
+    public void contadorCoche() {
+        //Metodo utilizado para que cuente los coches a la hora de mostrarlo (Por hacer bonito, es irrelevante su uso.)
         cont++;
     }
 }
